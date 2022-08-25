@@ -10,12 +10,17 @@
   background: linear-gradient(var(--main-linear-gradient));
 }
 
+.error {
+  display: none;
+}
+
 .app-container {
+  @include flex-config($direction: column, $justify: center);
+  height: 100vh;
 }
 
 .location-date {
   color: var(--clr-light);
-  margin-top: 5rem;
 
   &__location {
     font-size: 2rem;
@@ -24,13 +29,15 @@
 
 .main-weather-info {
   @include flex-config($direction: column, $justify: center);
-  height: 85vh;
   color: var(--clr-light);
 }
 
 .main-weather {
   @include flex-config($align: center);
-  margin-top: -10rem;
+}
+
+.weather-icon {
+  display: none;
 }
 
 .degrees {
@@ -43,10 +50,32 @@
   }
 }
 
+.search-input-wrapper {
+  display: flex;
+  margin-top: 1rem;
+
+  &__search-input {
+    width: 100%;
+    font-size: 1.8rem;
+    padding: 1rem;
+    outline: none;
+  }
+
+  &__search-icon {
+    padding: 1.2rem;
+    font-size: 2rem;
+    background-color: black;
+    min-width: 50px;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
 .additional-weather-info {
-  margin-top: 5rem;
+  margin-top: 2rem;
   border-top: 1px solid var(--clr-light-gray);
   border-bottom: 1px solid var(--clr-light-gray);
+  display: none;
 }
 
 .additional-info {
@@ -67,13 +96,17 @@
 }
 
 .additional-info-top {
-  display: flex;
-  justify-content: space-around;
+  @include flex-config($justify: space-around);
   padding: 2rem 0;
 }
 
 .additional-info-bottom {
-  display: flex;
-  justify-content: space-around;
+  @include flex-config($justify: space-around);
   padding-bottom: 2rem;
+}
+
+.info-cards {
+  @include flex-config($justify: space-around);
+  margin-top: 2rem;
+  display: none;
 }
