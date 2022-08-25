@@ -1,0 +1,27 @@
+@use '../abstracts/' as *;
+
+.info-card {
+  @include flex-config($direction: column, $align: center);
+  background-color: var(--clr-card-bg-gray);
+  padding: 3rem 0.5rem;
+  width: 30%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  @include respond(sm) {
+    padding: 3rem 1rem;
+    width: 20%;
+  }
+
+  &__description {
+    flex: 1;
+    font-size: 1.8rem;
+    color: var(--clr-light-gray);
+    text-align: center;
+  }
+
+  &__value {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: var(--clr-light);
+  }
+}
