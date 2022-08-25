@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="app">
+      <main class="main">
+        <div class="container app-container">
+          <section class="location-date">
+            <h1 class="location-date__location" id="location"></h1>
+          </section>
+          <section class="main-weather-info">
+            <div class="main-weather">
+              <img alt="weather icon" id="weather-icon" />
+              <div class="degrees">
+                <h3 class="degrees__degrees" id="degrees"></h3>
+                <p class="degrees__description" id="weather-description"></p>
+              </div>
+            </div>
+
+            <div class="additional-weather-info">
+              <div class="additional-info-top">
+                <div class="additional-info">
+                  <p
+                    class="additional-info__value aditional-info__degrees"
+                    id="high"
+                  ></p>
+                  <p class="additional-info__category">High</p>
+                </div>
+                <div class="additional-info">
+                  <p
+                    class="additional-info__value aditional-info__degrees"
+                    id="feels-like"
+                  ></p>
+                  <p class="additional-info__category">Feels like</p>
+                </div>
+                <div class="additional-info">
+                  <p class="additional-info__value" id="sunrise"></p>
+                  <p class="additional-info__category">Sunrise</p>
+                </div>
+              </div>
+              <div class="additional-info-bottom">
+                <div class="additional-info">
+                  <p class="additional-info__value" id="low"></p>
+                  <p class="additional-info__category">low</p>
+                </div>
+                <div class="additional-info">
+                  <p class="additional-info__value" id="humidity"></p>
+                  <p class="additional-info__category">Humidity</p>
+                </div>
+                <div class="additional-info">
+                  <p class="additional-info__value" id="sunset"></p>
+                  <p class="additional-info__category">Sunset</p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="info-cards"></section>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/src/index.ts"></script>
+  </body>
+</html>

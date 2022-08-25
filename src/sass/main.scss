@@ -1,0 +1,79 @@
+@use './abstracts/' as *;
+@use './base/' as *;
+@use './utilities/' as *;
+@use './components/' as *;
+
+.main {
+  @include flex-config($direction: column, $align: center);
+  height: 100vh;
+  background: var(--main-bg-color);
+  background: linear-gradient(var(--main-linear-gradient));
+}
+
+.app-container {
+}
+
+.location-date {
+  color: var(--clr-light);
+  margin-top: 5rem;
+
+  &__location {
+    font-size: 2rem;
+  }
+}
+
+.main-weather-info {
+  @include flex-config($direction: column, $justify: center);
+  height: 85vh;
+  color: var(--clr-light);
+}
+
+.main-weather {
+  @include flex-config($align: center);
+  margin-top: -10rem;
+}
+
+.degrees {
+  &__degrees {
+    font-size: 5rem;
+  }
+
+  &__description {
+    font-size: 2rem;
+  }
+}
+
+.additional-weather-info {
+  margin-top: 5rem;
+  border-top: 1px solid var(--clr-light-gray);
+  border-bottom: 1px solid var(--clr-light-gray);
+}
+
+.additional-info {
+  &__value {
+    @include flex-config($align: center);
+    font-size: 2rem;
+  }
+
+  &__degrees-span {
+    font-size: 5rem;
+  }
+
+  &__category {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    color: var(--clr-light-gray);
+  }
+}
+
+.additional-info-top {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 0;
+}
+
+.additional-info-bottom {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 2rem;
+}
