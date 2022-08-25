@@ -11,6 +11,9 @@ export interface WeatherData {
     temp_min: number;
     feels_like: number;
     humidity: number;
+    pressure: number;
+    grnd_level: number;
+    sea_level: number;
   };
   weather: [
     {
