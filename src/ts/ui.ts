@@ -4,6 +4,7 @@ export function displayWeather(data: WeatherData) {
   displayLocationAndDate(data);
   displayMainWeather(data);
   displayAdditionalInfo(data);
+  displayInfoCards(data);
   console.log(data);
 }
 
@@ -20,10 +21,17 @@ function roundNumber(num: number) {
 }
 
 function formatTimeStamp(timeStamp: number) {
-  const date = new Date(timeStamp);
-  const time = `${date.getHours()}:${date.getMinutes()}`;
+  const date = new Date(timeStamp * 1000);
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+
+  const time = `${padTo2Digits(hours)} : ${padTo2Digits(minutes)}`;
 
   return time;
+}
+
+function padTo2Digits(num: number) {
+  return num.toString().padStart(2, '0');
 }
 
 function displayLocationAndDate(data: WeatherData) {
@@ -67,21 +75,31 @@ function displayAdditionalInfo(data: WeatherData) {
     ) as HTMLParagraphElement,
     sunsetParagraph = document.getElementById('sunset') as HTMLParagraphElement;
 
-  highParagraph.innerText = `${roundNumber(data.main.temp_max).toString()} `;
-  const degreesParagraph = document.querySelectorAll(
-    '.aditional-info__degrees'
-  );
-  console.log(degreesParagraph);
-
-  const degreesSpan = document.createElement('span') as HTMLSpanElement;
-  degreesSpan.classList.add('additional-info__degrees-span');
-  degreesSpan.innerText = '°';
-  highParagraph.appendChild(degreesSpan);
+  highParagraph.innerText = `${roundNumber(data.main.temp_max).toString()} °`;
   feelsLikeParagraph.innerText = `${roundNumber(
     data.main.feels_like
-  ).toString()}`;
+  ).toString()} °`;
   sunriseParagraph.innerText = formatTimeStamp(data.sys.sunrise).toString();
   lowParagraph.innerText = `${roundNumber(data.main.temp_min).toString()} °`;
   humidityParagraph.innerText = `${data.main.humidity.toString()} %`;
   sunsetParagraph.innerText = formatTimeStamp(data.sys.sunset).toString();
+}
+
+function displayInfoCards(data: WeatherData) {
+  const pressure = document.getElementById('pressure') as HTMLParagraphElement;
+  const pressureGrndLevel = document.getElementById(
+    'ground-level'
+  ) as HTMLParagraphElement;
+  const pressureSeaLevel = document.getElementById(
+    'sea-level'
+  ) as HTMLParagraphElement;
+
+  pressure.innerText = `${data.main.pressure.toString()} hPa`;
+  data.main.grnd_level
+    ? (pressureGrndLevel.innerText = `${data.main.grnd_level.toString()} hPa`)
+    : (pressureGrndLevel.innerText = 'No data');
+
+  data.main.sea_level
+    ? (pressureSeaLevel.innerText = `${data.main.sea_level.toString()} hPa`)
+    : (pressureSeaLevel.innerText = 'No data');
 }

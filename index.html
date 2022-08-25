@@ -17,33 +17,43 @@
   <body>
     <div id="app">
       <main class="main">
-        <div class="container app-container">
+        <p id="error"></p>
+        <div class="container app-container" id="app-container">
           <section class="location-date">
             <h1 class="location-date__location" id="location"></h1>
           </section>
           <section class="main-weather-info">
             <div class="main-weather">
-              <img alt="weather icon" id="weather-icon" />
-              <div class="degrees">
+              <img alt="weather icon" class="weather-icon" id="weather-icon" />
+              <div class="degrees" id="degrees-div">
                 <h3 class="degrees__degrees" id="degrees"></h3>
                 <p class="degrees__description" id="weather-description"></p>
               </div>
             </div>
 
-            <div class="additional-weather-info">
+            <label for="location-search" class="search-label"
+              >Search city</label
+            >
+            <div class="search-input-wrapper">
+              <input
+                type="search"
+                class="search-input-wrapper__search-input"
+                id="city-search"
+              />
+              <i
+                class="fa-solid fa-magnifying-glass search-input-wrapper__search-icon"
+                id="search-icon"
+              ></i>
+            </div>
+
+            <div class="additional-weather-info" id="additional-weather-info">
               <div class="additional-info-top">
                 <div class="additional-info">
-                  <p
-                    class="additional-info__value aditional-info__degrees"
-                    id="high"
-                  ></p>
+                  <p class="additional-info__value" id="high"></p>
                   <p class="additional-info__category">High</p>
                 </div>
                 <div class="additional-info">
-                  <p
-                    class="additional-info__value aditional-info__degrees"
-                    id="feels-like"
-                  ></p>
+                  <p class="additional-info__value" id="feels-like"></p>
                   <p class="additional-info__category">Feels like</p>
                 </div>
                 <div class="additional-info">
@@ -67,10 +77,28 @@
               </div>
             </div>
           </section>
-          <section class="info-cards"></section>
+          <section class="info-cards" id="info-cards">
+            <div class="info-card">
+              <p class="info-card__description">Pressure</p>
+              <p class="info-card__value" id="pressure"></p>
+            </div>
+            <div class="info-card">
+              <p class="info-card__description">Ground Level</p>
+              <p class="info-card__value" id="ground-level"></p>
+            </div>
+            <div class="info-card">
+              <p class="info-card__description">Sea Level</p>
+              <p class="info-card__value" id="sea-level"></p>
+            </div>
+          </section>
         </div>
       </main>
     </div>
     <script type="module" src="/src/index.ts"></script>
+    <script
+      type="module"
+      src="https://kit.fontawesome.com/ab54ee68f9.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
