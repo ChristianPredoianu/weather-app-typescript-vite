@@ -1,15 +1,19 @@
-import './sass/main.scss';
 import { getPositionData } from './ts/getPosition';
 import { getWeatherData } from './ts/openWeather';
-import { displayWeather } from './ts/ui';
+import { displayWeather, initAppUi } from './ts/ui';
 import { animateApp } from './ts/gsap';
-import { showUserPositionError } from './ts/errors';
+import { showUserPositionError, setInputError } from './ts/errors';
 
 import { Position } from './types/position.interface';
 import { WeatherData } from './types/weatherData.interface';
-import './ts/openWeather';
+
+import './sass/main.scss';
+
+export let isValidCity: boolean;
 
 function getCurrentPositionData() {
+  isValidCity = true;
+
   getPositionData()
     .then((position: Position) => {
       initAppUi();
@@ -23,34 +27,43 @@ function getCurrentPositionData() {
     });
 }
 
-function initAppUi() {
-  const weatherIcon = document.getElementById(
-    'weather-icon'
-  ) as HTMLImageElement;
-  weatherIcon.style.display = 'block';
-  const additionalWeatherDiv = document.getElementById(
-    'additional-weather-info'
-  ) as HTMLDivElement;
-  additionalWeatherDiv.style.display = 'block';
-  const infoCardsDiv = document.getElementById('info-cards') as HTMLDivElement;
-  infoCardsDiv.style.display = 'flex';
+function searchCity() {
+  setInputError({ errorMsg: '', display: 'none' });
+  getWeatherData(input.value)
+    .then((data: WeatherData) => displayWeather(data))
+    .then(() => {
+      isValidCity = true;
+      if (isValidCity) {
+        animateApp();
+        initAppUi();
+        console.log(isValidCity);
+      }
+    })
+    .catch((err) => {
+      if (err) {
+        setInputError({
+          errorMsg: `The city ${input.value} does not exist. Try a different city`,
+          display: 'block',
+        });
+        isValidCity = false;
+        initAppUi();
+      }
+    });
+  input.value = '';
 }
 
-const searchIcon = document.getElementById('search-icon') as HTMLElement;
 const input = document.getElementById('city-search') as HTMLInputElement;
+const searchIcon = document.getElementById('search-icon') as HTMLElement;
 
 input.addEventListener('keypress', (e) => {
   if (input.value !== '' && e.key === 'Enter') {
-    getWeatherData(input.value).then((data: WeatherData) =>
-      displayWeather(data)
-    );
-    animateApp();
+    searchCity();
   }
 });
 
 searchIcon.addEventListener('click', (e) => {
   if (input.value !== '') {
-  } else {
+    searchCity();
   }
 });
 
