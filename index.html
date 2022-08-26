@@ -17,13 +17,13 @@
   <body>
     <div id="app">
       <main class="main">
-        <p id="error"></p>
+        <div class="overlay"></div>
         <div class="container app-container" id="app-container">
           <section class="location-date">
             <h1 class="location-date__location" id="location"></h1>
           </section>
           <section class="main-weather-info">
-            <div class="main-weather">
+            <div class="main-weather" id="main-weather">
               <img alt="weather icon" class="weather-icon" id="weather-icon" />
               <div class="degrees" id="degrees-div">
                 <h3 class="degrees__degrees" id="degrees"></h3>
@@ -45,7 +45,8 @@
                 id="search-icon"
               ></i>
             </div>
-
+            <p class="input-error" id="input-error"></p>
+            <p class="user-position-error" id="error"></p>
             <div class="additional-weather-info" id="additional-weather-info">
               <div class="additional-info-top">
                 <div class="additional-info">
