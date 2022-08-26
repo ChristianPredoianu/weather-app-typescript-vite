@@ -16,6 +16,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  overflow: hidden;
+}
+
 /* Remove list styles on ul, ol elements  default styling will be removed */
 ul,
 ol {
