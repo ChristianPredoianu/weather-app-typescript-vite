@@ -1,11 +1,36 @@
 import { WeatherData } from '../types/weatherData.interface';
+import { isValidCity } from '..';
+
+export function initAppUi() {
+  const mainWeatherDiv = document.getElementById(
+    'main-weather'
+  ) as HTMLDivElement;
+  const weatherIcon = document.getElementById(
+    'weather-icon'
+  ) as HTMLImageElement;
+  const additionalWeatherDiv = document.getElementById(
+    'additional-weather-info'
+  ) as HTMLDivElement;
+  const infoCardsDiv = document.getElementById('info-cards') as HTMLDivElement;
+
+  if (isValidCity) {
+    mainWeatherDiv.style.display = 'flex';
+    weatherIcon.style.display = 'block';
+    additionalWeatherDiv.style.display = 'block';
+    infoCardsDiv.style.display = 'flex';
+  } else {
+    mainWeatherDiv.style.display = 'none';
+    weatherIcon.style.display = 'none';
+    additionalWeatherDiv.style.display = 'none';
+    infoCardsDiv.style.display = 'none';
+  }
+}
 
 export function displayWeather(data: WeatherData) {
   displayLocationAndDate(data);
   displayMainWeather(data);
   displayAdditionalInfo(data);
   displayInfoCards(data);
-  console.log(data);
 }
 
 function capitalizeFirstLetter(str: string) {
@@ -38,9 +63,9 @@ function displayLocationAndDate(data: WeatherData) {
   const locationHeading = document.getElementById(
     'location'
   ) as HTMLHeadingElement;
-  locationHeading.textContent = data.name;
-
   const countrySpan = document.createElement('span') as HTMLSpanElement;
+
+  locationHeading.textContent = data.name;
   countrySpan.innerText = `, ${data.sys.country}`;
   locationHeading.appendChild(countrySpan);
 }

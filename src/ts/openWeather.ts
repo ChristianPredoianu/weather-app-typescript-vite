@@ -13,11 +13,8 @@ export async function getWeatherData(position: any) {
     : (locationUrl = `${baseUrl}lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric
   `);
 
-  try {
-    const response = await fetch(locationUrl);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+  const response = await fetch(locationUrl);
+  const data = await response.json();
+
+  return data;
 }

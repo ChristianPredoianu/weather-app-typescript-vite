@@ -5,25 +5,35 @@
 
 .main {
   @include flex-config($direction: column, $align: center);
-  height: 100vh;
-  background: var(--main-bg-color);
-  background: linear-gradient(var(--main-linear-gradient));
+  position: relative;
+  min-height: 100vh;
+  background-image: url('../assets/background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.error {
-  display: none;
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: rgb(14, 14, 14, 0.8);
 }
 
 .app-container {
   @include flex-config($direction: column, $justify: center);
-  height: 100vh;
+  min-height: 100vh;
+  position: relative;
+  padding-top: 3rem;
 }
 
 .location-date {
   color: var(--clr-light);
 
   &__location {
-    font-size: 2rem;
+    font-size: clamp(2rem, 2vw, 3rem);
   }
 }
 
@@ -34,20 +44,27 @@
 
 .main-weather {
   @include flex-config($align: center);
+  display: none;
 }
 
 .weather-icon {
   display: none;
+  font-size: 10rem;
 }
 
 .degrees {
   &__degrees {
-    font-size: 5rem;
+    font-size: clamp(5rem, 6vw, 10rem);
   }
 
   &__description {
     font-size: 2rem;
   }
+}
+
+.search-label {
+  font-size: clamp(1.5rem, 2vw, 1.8rem);
+  padding-top: 1rem;
 }
 
 .search-input-wrapper {
@@ -59,6 +76,10 @@
     font-size: 1.8rem;
     padding: 1rem;
     outline: none;
+
+    @include respond(md) {
+      width: 30%;
+    }
   }
 
   &__search-icon {
@@ -71,6 +92,20 @@
   }
 }
 
+.input-error {
+  display: none;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  margin-top: 1rem;
+  color: var(--clr-invalid);
+}
+
+.user-position-error {
+  display: none;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  margin-top: 1rem;
+  color: var(--clr-invalid);
+}
+
 .additional-weather-info {
   margin-top: 2rem;
   border-top: 1px solid var(--clr-light-gray);
@@ -81,15 +116,11 @@
 .additional-info {
   &__value {
     @include flex-config($align: center);
-    font-size: 2rem;
-  }
-
-  &__degrees-span {
-    font-size: 5rem;
+    font-size: clamp(2rem, 3vw, 4.5rem);
   }
 
   &__category {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 2vw, 2rem);
     margin-top: 0.5rem;
     color: var(--clr-light-gray);
   }
@@ -109,4 +140,5 @@
   @include flex-config($justify: space-around);
   margin-top: 2rem;
   display: none;
+  padding-bottom: 3rem;
 }
