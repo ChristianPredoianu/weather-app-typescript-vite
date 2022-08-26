@@ -1,11 +1,12 @@
 :root {
   --main-bg-color: rgb(211, 211, 228);
-  --main-linear-gradient: 0deg, rgba(211, 211, 228, 1) 0%,
-    rgba(0, 86, 251, 1) 100%;
 
   --clr-light: #ebe1e1;
+  --clr-black: #000000;
   --clr-light-gray: #a1a1a1;
   --clr-invalid: #d30c0c;
 
+  --clr-overlay: rgba(14, 14, 14, 0.8);
+  --clr-box-shadow: rgba(90, 90, 90, 0.24) 0px 3px 8px;
   --clr-card-bg-gray: rgba(90, 90, 90, 0.4);
 }

@@ -14,18 +14,16 @@
 }
 
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+  @include position($pos: absolute, $top: 0, $left: 0);
   width: 100%;
   min-height: 100%;
-  background-color: rgb(14, 14, 14, 0.8);
+  background-color: var(--clr-overlay);
 }
 
 .app-container {
   @include flex-config($direction: column, $justify: center);
-  min-height: 100vh;
   position: relative;
+  min-height: 100vh;
   padding-top: 3rem;
 }
 
@@ -83,10 +81,10 @@
   }
 
   &__search-icon {
-    padding: 1.2rem;
     font-size: 2rem;
-    background-color: black;
+    background-color: var(--clr-black);
     min-width: 50px;
+    padding: 1.2rem;
     text-align: center;
     cursor: pointer;
   }
@@ -95,22 +93,22 @@
 .input-error {
   display: none;
   font-size: clamp(1.5rem, 2vw, 2rem);
-  margin-top: 1rem;
   color: var(--clr-invalid);
+  margin-top: 1rem;
 }
 
 .user-position-error {
   display: none;
   font-size: clamp(1.5rem, 2vw, 2rem);
-  margin-top: 1rem;
   color: var(--clr-invalid);
+  margin-top: 1rem;
 }
 
 .additional-weather-info {
+  display: none;
   margin-top: 2rem;
   border-top: 1px solid var(--clr-light-gray);
   border-bottom: 1px solid var(--clr-light-gray);
-  display: none;
 }
 
 .additional-info {
@@ -121,8 +119,8 @@
 
   &__category {
     font-size: clamp(1.5rem, 2vw, 2rem);
-    margin-top: 0.5rem;
     color: var(--clr-light-gray);
+    margin-top: 0.5rem;
   }
 }
 
@@ -138,7 +136,7 @@
 
 .info-cards {
   @include flex-config($justify: space-around);
-  margin-top: 2rem;
   display: none;
+  margin-top: 2rem;
   padding-bottom: 3rem;
 }

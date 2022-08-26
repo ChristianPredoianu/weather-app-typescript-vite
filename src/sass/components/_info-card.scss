@@ -5,7 +5,7 @@
   background-color: var(--clr-card-bg-gray);
   padding: 3rem 1rem;
   width: 30%;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: var(--clr-box-shadow);
   text-align: center;
 
   @include respond(sm) {
