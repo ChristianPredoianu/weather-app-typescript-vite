@@ -36,7 +36,6 @@ function searchCity() {
       if (isValidCity) {
         animateApp();
         initAppUi();
-        console.log(isValidCity);
       }
     })
     .catch((err) => {
