@@ -3,14 +3,19 @@ interface SetInputErrorParams {
   errorMsg: string;
 }
 
+const userPositionError = document.getElementById(
+  'error'
+) as HTMLParagraphElement;
+
 export let isInputError = false;
 
 export function showUserPositionError(err: string) {
-  const userPositionError = document.getElementById(
-    'error'
-  ) as HTMLParagraphElement;
   userPositionError.style.display = 'block';
   userPositionError.innerText = `${err}, Search for a city`;
+}
+
+export function removeUserPositionError() {
+  userPositionError.style.display = 'none';
 }
 
 export function setInputError(msg: SetInputErrorParams) {
