@@ -60,7 +60,7 @@ input.addEventListener('keypress', (e) => {
   }
 });
 
-searchIcon.addEventListener('click', (e) => {
+searchIcon.addEventListener('click', () => {
   if (input.value !== '') {
     searchCity();
   }
