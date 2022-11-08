@@ -2,7 +2,11 @@ import { getPositionData } from './ts/getPosition';
 import { getWeatherData } from './ts/openWeather';
 import { displayWeather, initAppUi } from './ts/ui';
 import { animateApp } from './ts/gsap';
-import { showUserPositionError, setInputError } from './ts/errors';
+import {
+  showUserPositionError,
+  removeUserPositionError,
+  setInputError,
+} from './ts/errors';
 
 import { Position } from './types/position.interface';
 import { WeatherData } from './types/weatherData.interface';
@@ -10,6 +14,9 @@ import { WeatherData } from './types/weatherData.interface';
 import './sass/main.scss';
 
 export let isValidCity: boolean;
+
+const input = document.getElementById('city-search') as HTMLInputElement;
+const searchIcon = document.getElementById('search-icon') as HTMLElement;
 
 function getCurrentPositionData() {
   isValidCity = true;
@@ -36,6 +43,7 @@ function searchCity() {
       if (isValidCity) {
         animateApp();
         initAppUi();
+        removeUserPositionError();
       }
     })
     .catch((err) => {
@@ -46,13 +54,11 @@ function searchCity() {
         });
         isValidCity = false;
         initAppUi();
+        removeUserPositionError();
       }
     });
   input.value = '';
 }
-
-const input = document.getElementById('city-search') as HTMLInputElement;
-const searchIcon = document.getElementById('search-icon') as HTMLElement;
 
 input.addEventListener('keypress', (e) => {
   if (input.value !== '' && e.key === 'Enter') {
