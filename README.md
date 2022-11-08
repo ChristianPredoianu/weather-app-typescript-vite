@@ -17,7 +17,7 @@
     <a href="https://github.com/ChristianPredoianu/weather-app-typescript-vite/issues">Report Bug</a>
   </p>
 </p>
-
+ 
  
 
 <!-- TABLE OF CONTENTS -->
